@@ -2,8 +2,11 @@ package BinarySearch;
 
 import interfaces.ST;
 
+import java.util.Arrays;
+
 /**
- * Binary search with an ordered array of key-value pairs. Uses repeated doubling to resize the array
+ * Symbol table implementation with binary search in an ordered array.
+ * Uses repeated doubling to resize the array
  * Takes advantage that keys are comparable to give us an efficient search
  * Search: log(N)
  * Insert: N
@@ -48,7 +51,7 @@ public class ArrayST<Key extends Comparable<Key>, Value>
         int index = rank(key);
 
         // shift larger keys over
-        for (int i = keys.length - 1; i >= index; i--) {
+        for (int i = size; i > index; i--) {
             keys[i] = keys[i-1];
             vals[i] = vals[i=1];
         }
@@ -60,32 +63,58 @@ public class ArrayST<Key extends Comparable<Key>, Value>
 
     @Override
     public Value get(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
+        if (isEmpty()) return null;
+        int index = rank(key);
+        if (index < size && keys[index].compareTo(key) == 0) return vals[index];
+
         return null;
     }
 
     @Override
     public void delete(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
+        if (isEmpty()) return;
 
+        int index = rank(key);
+
+        // key not in table
+        if (index == size || keys[index].compareTo(key) != 0)
+            return;
+
+        // shift values back
+        for (int i = index; i < size; i++) {
+            keys[i] = keys[i+1];
+            vals[i] = vals[i+1];
+        }
+
+        // resize to half if 1/4 full
+        if (size > 0 && size == keys.length / 4) resize(keys.length / 2);
+
+        keys[index] = null;
+        vals[index] = null;
+        size--;
     }
 
     @Override
     public boolean contains(Key key) {
-        return false;
+        if (key == null) throw new IllegalArgumentException("argument to contains is null");
+        return get(key) != null;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public Iterable<Key> keys() {
-        return null;
+        return Arrays.asList(keys.clone());
     }
 
     /**
@@ -93,7 +122,7 @@ public class ArrayST<Key extends Comparable<Key>, Value>
      * @param n
      */
     private void resize(int n) {
-        Key[] newArrKeys = (Key[]) new Object[n];
+        Key[] newArrKeys = (Key[]) new Comparable[n];
 
         for(int i = 0; i < keys.length; i++) {
             newArrKeys[i] = keys[i];

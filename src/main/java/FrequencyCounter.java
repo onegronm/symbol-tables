@@ -11,8 +11,6 @@ public class FrequencyCounter {
     public static void main(String[] args){
         ST<String, Integer> st = new ArrayST<>();
 
-        st.put("test", 1);
-
         int minlen = Integer.parseInt(args[0]);
         while (!StdIn.isEmpty()) {
             String word = StdIn.readString();
