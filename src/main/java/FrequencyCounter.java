@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class FrequencyCounter {
     public static void main(String[] args)  {
 
-        int minLen = 7; // Integer.parseInt(args[0]);
+        int minLen = 1; // Integer.parseInt(args[0]);
 
         try {
             /**
@@ -20,7 +20,7 @@ public class FrequencyCounter {
              */
             ST<String, Integer> st = new BinarySearchST<>();
 
-            File file = new File("C:\\Code\\symbol-tables\\bible.txt");
+            File file = new File("C:\\Code\\symbol-tables\\dickens.txt");
             Scanner sc = new Scanner(new FileReader(file));
 
             String word;
@@ -48,8 +48,8 @@ public class FrequencyCounter {
                 }
             }
 
-            StdOut.println("Total word count: " + st.total());
-            StdOut.println("Distinct word count: " + st.size());
+            StdOut.println("Total word count at least " + minLen + " characters long: " + st.total());
+            StdOut.println("Distinct word count at least " + minLen + " characters long: " + st.size());
             StdOut.println("Highest frequency: " + max + " " + st.get(max));
         }
         catch (Exception e) {
