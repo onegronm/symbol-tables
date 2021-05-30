@@ -10,7 +10,7 @@ Source: https://introcs.cs.princeton.edu/java/data/
 - Highest word count: 'the' 244961
 
 | Implementation  | Runtime | Search | Insert | Delete | Notes |
-| ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Binary search in an ordered array  | 2 m 30 s 904 ms  | O(lg(n)) | O(n) | O(n) | Need to shift all greater items over |
 
 
