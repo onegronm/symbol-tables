@@ -44,6 +44,12 @@ public interface ST<Key extends Comparable<Key>, Value> {
     int size();
 
     /**
+     * total number of words
+     * @return
+     */
+    int total();
+
+    /**
      * All the keys in the table
      * @return
      */

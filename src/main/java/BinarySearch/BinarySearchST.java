@@ -15,7 +15,7 @@ import java.util.Arrays;
  * @param <Key>
  * @param <Value>
  */
-public class ArrayST<Key extends Comparable<Key>, Value>
+public class BinarySearchST<Key extends Comparable<Key>, Value>
     implements ST<Key, Value> {
 
     private static final int INIT_SIZE = 2;
@@ -25,8 +25,9 @@ public class ArrayST<Key extends Comparable<Key>, Value>
     private Key[] keys;
     private Value[] vals;
     private int size;
+    private int total;
 
-    public ArrayST() {
+    public BinarySearchST() {
         keys = (Key[]) new Comparable[INIT_SIZE];
         vals = (Value[]) new Object[INIT_SIZE];
     }
@@ -44,16 +45,22 @@ public class ArrayST<Key extends Comparable<Key>, Value>
             return;
         }
 
-        delete(key); // handle duplicates
+        total++;
 
         if (size >= vals.length) resize(2 * size);
 
         int index = rank(key);
 
+        // key is already in table
+        if (index < size && keys[index].compareTo(key) == 0) {
+            vals[index] = val;
+            return;
+        }
+
         // shift larger keys over
         for (int i = size; i > index; i--) {
             keys[i] = keys[i-1];
-            vals[i] = vals[i=1];
+            vals[i] = vals[i-1];
         }
 
         keys[index] = key;
@@ -76,6 +83,7 @@ public class ArrayST<Key extends Comparable<Key>, Value>
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         if (isEmpty()) return;
 
+        total--;
         int index = rank(key);
 
         // key not in table
@@ -83,7 +91,7 @@ public class ArrayST<Key extends Comparable<Key>, Value>
             return;
 
         // shift values back
-        for (int i = index; i < size; i++) {
+        for (int i = index; i < size - 1; i++) {
             keys[i] = keys[i+1];
             vals[i] = vals[i+1];
         }
@@ -110,6 +118,11 @@ public class ArrayST<Key extends Comparable<Key>, Value>
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public int total() {
+        return total;
     }
 
     @Override
@@ -146,19 +159,23 @@ public class ArrayST<Key extends Comparable<Key>, Value>
     private int rank(Key key) {
         int lo = 0;
         int hi = size - 1;
-
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            int cmp = key.compareTo(keys[mid]);
-            if (cmp > 0){
-                lo = mid + 1;
+        try {
+            while (lo <= hi) {
+                int mid = lo + (hi - lo) / 2;
+                int cmp = key.compareTo(keys[mid]);
+                if (cmp > 0){
+                    lo = mid + 1;
+                }
+                else if (cmp < 0) {
+                    hi = mid - 1;
+                }
+                else return mid;
             }
-            else if (cmp < 0) {
-                hi = mid - 1;
-            }
-            else return mid;
+            return lo;
         }
-        return lo;
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return -1;
     }
-
 }

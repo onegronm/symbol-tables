@@ -1,6 +1,6 @@
 interfaces/ST.java
  interfaces.ST
-BinarySearch/ArrayST.java
- BinarySearch.ArrayST
+BinarySearch/BinarySearchST.java
+ BinarySearch.BinarySearchST
 FrequencyCounter.java
  FrequencyCounter
