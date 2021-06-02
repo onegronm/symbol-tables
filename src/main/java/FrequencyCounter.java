@@ -1,4 +1,5 @@
 import BinarySearch.BinarySearchST;
+import BinarySearchTree.BST;
 import edu.princeton.cs.algs4.StdOut;
 import interfaces.ST;
 
@@ -20,6 +21,10 @@ public class FrequencyCounter {
              */
             ST<String, Integer> st = new BinarySearchST<>();
 
+            /**
+             * Binary search tree
+             */
+            // ST<String, Integer> st = new BST();
             File file = new File("C:\\Code\\symbol-tables\\dickens.txt");
             Scanner sc = new Scanner(new FileReader(file));
 

@@ -130,6 +130,51 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>
         return Arrays.asList(keys.clone());
     }
 
+    @Override
+    public Key min() {
+        return null;
+    }
+
+    @Override
+    public Key max() {
+        return null;
+    }
+
+    @Override
+    public Key floor(Key key) {
+        return null;
+    }
+
+    @Override
+    public Key ceiling(Key key) {
+        return null;
+    }
+
+    @Override
+    public Key select(int k) {
+        return null;
+    }
+
+    @Override
+    public void deleteMin() {
+
+    }
+
+    @Override
+    public void deleteMax() {
+
+    }
+
+    @Override
+    public int size(Key lo, Key hi) {
+        return 0;
+    }
+
+    @Override
+    public Iterable<Key> keys(Key lo, Key hi) {
+        return null;
+    }
+
     /**
      * Resize parallel arrays to given capacity
      * @param n
@@ -156,7 +201,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>
      * @param key
      * @return
      */
-    private int rank(Key key) {
+    public int rank(Key key) {
         int lo = 0;
         int hi = size - 1;
         try {

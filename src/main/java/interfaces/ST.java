@@ -54,4 +54,70 @@ public interface ST<Key extends Comparable<Key>, Value> {
      * @return
      */
     Iterable<Key> keys();
+
+    /**
+     * Smallest key
+     * @return
+     */
+    Key min();
+
+    /**
+     * Largest key
+     * @return
+     */
+    Key max();
+
+    /**
+     * Largest key less than or equal to key
+     * @param key
+     * @return
+     */
+    Key floor(Key key);
+
+    /**
+     * Smallest key greater than or equal to key
+     * @param key
+     * @return
+     */
+    Key ceiling(Key key);
+
+    /**
+     * Key of rank k
+     * @param k
+     * @return
+     */
+    Key select(int k);
+
+    /**
+     * Delete smallest key
+     */
+    void deleteMin();
+
+    /**
+     * Delete largest key
+     */
+    void deleteMax();
+
+    /**
+     * Number of keys in [lo...hi]
+     * @param lo
+     * @param hi
+     * @return
+     */
+    int size(Key lo, Key hi);
+
+    /**
+     * Number of keys strictly less than key
+     * @param key
+     * @return
+     */
+    int rank(Key key);
+
+    /**
+     * Keys in [lo...hi], in sorted order
+     * @param lo
+     * @param hi
+     * @return
+     */
+    Iterable<Key> keys(Key lo, Key hi);
 }
