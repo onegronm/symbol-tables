@@ -170,7 +170,15 @@ public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> 
 
     @Override
     public int rank(Key key) {
-        return 0;
+        return rank(key, root);
+    }
+
+    private int rank(Key key, Node x){
+        if (x == null) throw new IllegalArgumentException("argument to rank() is null");
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) return rank(key, x.left);
+        if (cmp > 0) return 1 + size(x) + rank(key, x.right);
+        return size(x.left);
     }
 
     @Override
