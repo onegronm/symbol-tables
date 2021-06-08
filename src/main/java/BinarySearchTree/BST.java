@@ -2,6 +2,8 @@ package BinarySearchTree;
 
 import edu.princeton.cs.algs4.Queue;
 import interfaces.ST;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.NoSuchElementException;
 
 public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> {
@@ -55,11 +57,6 @@ public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> 
             else return x.val;
         }
         return null;
-    }
-
-    @Override
-    public void delete(Key key) {
-
     }
 
     @Override
@@ -143,29 +140,34 @@ public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> 
     private Key ceiling(Node x, Key key, Key best) {
         if (x == null) return best;
         int cmp = key.compareTo(x.key);
-        if (cmp < 0) return floor(x.right, key, x.key);
-        if (cmp > 0) return floor(x.left, key, null);
+        if (cmp < 0) return ceiling(x.right, key, x.key);
+        if (cmp > 0) return ceiling(x.left, key, null);
         return x.key;
     }
 
     @Override
     public Key select(int k) {
-        return null;
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void delete(Key key) {
+        throw new NotImplementedException();
     }
 
     @Override
     public void deleteMin() {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public void deleteMax() {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public int size(Key lo, Key hi) {
-        return 0;
+        throw new NotImplementedException();
     }
 
     @Override
@@ -183,7 +185,7 @@ public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> 
 
     @Override
     public Iterable<Key> keys(Key lo, Key hi) {
-        return null;
+        throw new NotImplementedException();
     }
 
     private void inorder(Node x, Queue<Key> q){
