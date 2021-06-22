@@ -1,5 +1,5 @@
 # symbol-tables
-WIP: A frequency counter to compare the performance of symbol table implementations. Specifically, we compare the performance of binary search with an ordered array, binary search tree, 2-3 tree search, red-black BST, and hashing.
+WIP: A frequency counter to compare the performance of symbol table implementations. Specifically, we compare the performance of binary search with an ordered array, binary search tree, red-black BST, and hashing.
 
 Dataset: dickens.txt (nearly the complete works of Charles Dickens)
 
