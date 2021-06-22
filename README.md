@@ -13,5 +13,4 @@ Source: https://introcs.cs.princeton.edu/java/data/
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Binary search in an ordered array  | 2 m 18 s | O(lg(n)) | O(n) | O(n) | Need to shift all greater items over |
 | Binary search tree | 17 s | O(n) | O(n) | O(n) | O(~2 lg(h)) search/insert, O(sqrt(h)) delete on average case where h is the expected height of the tree. Worst-case height is N but exponentially small chance when keys are inserted in random order  |
-
-
+| Red-Black BST | 15 s | O(lg(n)) | O(lg(n)) | O(lg(n)) | Guaranteed logarithmic performance for all operations. The LLRB remains perfectly balanced whether the input is supplied in ascending, descending, or random order |

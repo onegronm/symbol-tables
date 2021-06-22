@@ -2,7 +2,6 @@ package BinarySearchTree;
 
 import edu.princeton.cs.algs4.Queue;
 import interfaces.ST;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.NoSuchElementException;
 
 /**
@@ -149,27 +148,27 @@ public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> 
 
     @Override
     public Key select(int k) {
-        throw new NotImplementedException();
+        return null;
     }
 
     @Override
     public void delete(Key key) {
-        throw new NotImplementedException();
+
     }
 
     @Override
     public void deleteMin() {
-        throw new NotImplementedException();
+
     }
 
     @Override
     public void deleteMax() {
-        throw new NotImplementedException();
+
     }
 
     @Override
     public int size(Key lo, Key hi) {
-        throw new NotImplementedException();
+        return 0;
     }
 
     @Override
@@ -187,7 +186,7 @@ public class BST<Key extends Comparable<Key>, Value> implements ST<Key , Value> 
 
     @Override
     public Iterable<Key> keys(Key lo, Key hi) {
-        throw new NotImplementedException();
+        return null;
     }
 
     private void inorder(Node x, Queue<Key> q){
